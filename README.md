@@ -24,6 +24,7 @@ I'm thinking a hierarchical tree where sections are hidden and can be expanded. 
 1. Paper explaining the ideas and what worked and did not
 2. A Python interface to run Assembly Theory on strings 
 3. Code that executes in polynomial time and is lighting fast (very scientific indeed)
+4. A visual representation output of the result in a notebook or returned as a website (HTML)
 
 ## References
 
