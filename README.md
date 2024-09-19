@@ -19,6 +19,12 @@ I'm thinking a hierarchical tree where sections are hidden and can be expanded. 
 3. A way to compute on long strings so we can compare AT to other complexity metrics or information theoretic ideas.
 
 
+**Output**
+
+1. Paper explaining the ideas and what worked and did not
+2. A Python interface to run Assembly Theory on strings 
+3. Code that executes in polynomial time and is lighting fast (very scientific indeed)
+
 ## References
 
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10567559/
