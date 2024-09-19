@@ -1,2 +1,25 @@
-# fast-string-assembly
-Assembly Theory index approximation on longer strings
+# Fast String Assembly
+
+Assembly Theory index approximation on longer strings. Example: protein sequence and 3Di sequence assembly computation.
+
+**Problem 1**: Computing the Assembly Index is super exponential. Roughly $O(n^n)$ computations and memory in the worst case.
+
+Can we approximate Assembly Theory or massively speed up the computation?
+
+Probably?
+
+**Problem 2**: once we have a large tree that defined the assembly index, how can we visualize this?
+
+I'm thinking a hierarchical tree where sections are hidden and can be expanded. Use something like https://apple.github.io/ml-mycelium/getting-started/
+
+**Who are these solutions helping?** 
+
+1. Assembly Theory Researchers (visualize their results and actually compute string results)
+2. People filtering and searching proteins with a complexity metric
+3. A way to compute on long strings so we can compare AT to other complexity metrics or information theoretic ideas.
+
+
+## References
+
+- https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10567559/
+- https://apple.github.io/ml-mycelium/
