@@ -1,34 +1,37 @@
 #include <string>
 #include <iostream>
 #include <set>
-
 #include <stdio.h>
 
-std::set<char> atomize_string(std::string str)
+using namespace std;
+
+set<string> atomize_string(string str)
 {
-	std::set<char> s;
+	set<string> s;
 	for (int i = 0; i < str.length(); ++i)
 	{
-		s.insert(str[i]);
+		string cs;
+		cs.push_back(str[i]);
+		s.insert(cs);
 	}
 	return s;
 }
 
-void preprocess_string(std::string *str_ptr)
+void preprocess_string(string *str_ptr)
 {
 	for (int i = 0; i < (*str_ptr).length(); ++i)
 	{
-		(*str_ptr)[i] = std::tolower((*str_ptr)[i]);
+		(*str_ptr)[i] = tolower((*str_ptr)[i]);
 	}
 }
 
-void print_set(std::set<char> s)
+void print_set(set<string> s)
 {
 	for (const auto &_s : s)
 	{
-		std::cout << _s << " ";
+		cout << _s << " ";
 	}
-	std::cout << "\n";
+	cout << "\n";
 }
 
 /**
@@ -36,14 +39,14 @@ void print_set(std::set<char> s)
  * 	-1 on ERROR
  *  integer >= 0 representing the assembly index for the string
  */
-int naive_string_assembly(std::string str)
+int naive_string_assembly(string str)
 {
-	std::cout << "Naive String Assembly (slow)" << "\n";
-	std::cout << "Input String: " << str << "\n";
+	cout << "Naive String Assembly (slow)" << "\n";
+	cout << "Input String: " << str << "\n";
 	preprocess_string(&str);
-	std::cout << "Preprocessed: " << str << "\n";
-	std::set<char> atoms = atomize_string(str);
-	std::cout << "Atoms: ";
+	cout << "Preprocessed: " << str << "\n";
+	set<string> atoms = atomize_string(str);
+	cout << "Atoms: ";
 	print_set(atoms);
 
 	return -1;
@@ -51,7 +54,7 @@ int naive_string_assembly(std::string str)
 
 int main()
 {
-	std::string a = "ABRACADABRA";
+	string a = "ABRACADABRA";
 	int out = naive_string_assembly(a);
 	return 0;
 }
