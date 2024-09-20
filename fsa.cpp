@@ -4,6 +4,9 @@
 #include <chrono>
 #include <stdio.h>
 
+#define LOG_ASM_TIME
+// #define LOG_ASM_OBJS
+
 using namespace std;
 
 set<string> atomize_string(string str)
@@ -75,9 +78,13 @@ skip:
 
 void log_obj(set<string> &objects, int t)
 {
+#ifdef LOG_ASM_TIME
 	printf("%zu Objects at t=%d\n", objects.size(), t);
+#endif
+#ifdef LOG_ASM_OBJS
 	print_set(objects);
 	cout << "\n";
+#endif
 }
 
 /**
@@ -123,7 +130,7 @@ int main()
 	string b = "aabb";
 	string c = a + a + a + a + a;
 	string d = "supercalifragilisticexpialidocious";
-	string input = b;
+	string input = c;
 
 	auto t1 = chrono::high_resolution_clock::now();
 
