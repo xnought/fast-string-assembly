@@ -78,6 +78,13 @@ skip:
 	return solution;
 }
 
+void log_obj(set<string> &objects, int t)
+{
+	printf("%zu Objects at t=%d\n", objects.size(), t);
+	print_set(objects);
+	cout << "\n";
+}
+
 /**
  * Returns
  * 	-1 on ERROR
@@ -101,14 +108,14 @@ int naive_string_assembly(string str)
 	set<string> objects = atoms;
 
 	// 2. Compute all object combinations to create new objects and add to the pool
+	int t = 0;
+	log_obj(objects, t);
 	int sol = naive_assemble_objects(str, objects);
-	// cout << sol << " ";
-	// print_set(objects);
+	log_obj(objects, ++t);
 	while (sol != true)
 	{
 		sol = naive_assemble_objects(str, objects);
-		// cout << sol << " ";
-		// print_set(objects);
+		log_obj(objects, ++t);
 	}
 	cout << "Solution found!" << "\n";
 
@@ -120,8 +127,9 @@ int main()
 	string a = "ABRACadabRA";
 	string b = "aabb";
 	string c = a + a + a + a + a;
+	string d = "supercalifragilisticexpialidocious";
+	string input = a;
 
-	string input = c;
 	auto t1 = chrono::high_resolution_clock::now();
 
 	int out = naive_string_assembly(input);
