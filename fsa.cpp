@@ -1,6 +1,7 @@
 #include <string>
 #include <iostream>
 #include <set>
+#include <chrono>
 #include <stdio.h>
 
 using namespace std;
@@ -34,21 +35,40 @@ void print_set(set<string> s)
 	cout << "\n";
 }
 
-void naive_assemble_objects(std::set<string> &objects)
+bool keep_object(string &str, string &object)
+{
+	bool smaller = object.length() <= str.length();
+	bool substr = str.find(object) != string::npos;
+	return smaller && substr;
+}
+
+// Returns if a solution was found or not during this assembly iteration
+bool naive_assemble_objects(string &str, set<string> &objects)
 {
 	set<string> new_objects;
-	for (const auto &a : objects)
+	bool solution = false;
+	for (auto a : objects)
 	{
-		for (const auto &b : objects)
+		for (auto b : objects)
 		{
 			new_objects.insert(a + b);
 			new_objects.insert(b + a);
 		}
 	}
-	for (const auto &no : new_objects)
+	for (auto no : new_objects)
 	{
-		objects.insert(no);
+		if (keep_object(str, no))
+		{
+			objects.insert(no);
+			if (no == str)
+			{
+				solution = true;
+				break;
+			};
+		}
 	}
+
+	return solution;
 }
 
 /**
@@ -72,10 +92,18 @@ int naive_string_assembly(string str)
 
 	// 1. history starts as just the atoms
 	set<string> objects = atoms;
+
 	// 2. Compute all object combinations to create new objects and add to the pool
-	naive_assemble_objects(objects);
-	cout << "objects: ";
-	print_set(objects);
+	int sol = naive_assemble_objects(str, objects);
+	// cout << sol << " ";
+	// print_set(objects);
+	while (sol != true)
+	{
+		sol = naive_assemble_objects(str, objects);
+		cout << sol << " ";
+		print_set(objects);
+	}
+	cout << "Solution found!" << "\n";
 
 	return -1;
 }
@@ -83,6 +111,15 @@ int naive_string_assembly(string str)
 int main()
 {
 	string a = "ABRACadabRA";
+	string b = "aabb";
+
+	auto t1 = chrono::high_resolution_clock::now();
+
 	int out = naive_string_assembly(a);
+
+	auto t2 = chrono::high_resolution_clock::now();
+	auto elapsed = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
+	cout << "Time: " << elapsed << "ms \n";
+
 	return 0;
 }
