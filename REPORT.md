@@ -20,6 +20,14 @@ This report will be converted into PDF format later on.
 	- Stop at $\lceil \log_2(n) \rceil - 1$ and do backtracking just for one layer to recover the last connection
 - Idea: forward in one thread, backtrack in another, do monte-carlo search in both directions.
 
+## Paper
+
+So there are two contributions to be had I see. Should they be two separate papers or not?
+
+1. The small learnings about how to speed up assembly computation while keeping end result correct.
+2. Way to visualize the assembly with Mycelium
+
+I would say the second is not really a contribution, but a good way to create and show figures.
 
 ## Cite
 
