@@ -112,10 +112,12 @@ int main()
 {
 	string a = "ABRACadabRA";
 	string b = "aabb";
+	string c = a + a + a;
 
+	string input = c;
 	auto t1 = chrono::high_resolution_clock::now();
 
-	int out = naive_string_assembly(a);
+	int out = naive_string_assembly(input);
 
 	auto t2 = chrono::high_resolution_clock::now();
 	auto elapsed = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
