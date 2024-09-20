@@ -26,6 +26,18 @@ I'm thinking a hierarchical tree where sections are hidden and can be expanded. 
 3. Code that executes in polynomial time and is lighting fast (very scientific indeed)
 4. A visual representation output of the result in a notebook or returned as a website (HTML)
 
+## Cite
+
+```bibtex
+@misc{bertucci2024fast,
+      title={Fast String Assembly}, 
+      author={Donald Bertucci},
+      year={2024},
+      url={https://github.com/xnought/fast-string-assembly}, 
+}
+```
+
+
 ## References
 
 - https://www.ncbi.nlm.nih.gov/pmc/articles/PMC10567559/

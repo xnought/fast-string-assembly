@@ -3,9 +3,10 @@
 #include <set>
 #include <chrono>
 #include <stdio.h>
+#include <math.h>
 
 #define LOG_ASM_TIME
-// #define LOG_ASM_OBJS
+#define LOG_ASM_OBJS
 
 using namespace std;
 
@@ -124,13 +125,20 @@ int naive_string_assembly(string str)
 	return -1;
 }
 
+int time_pred(string str)
+{
+	return ceil(log2(str.length()));
+}
+
 int main()
 {
 	string a = "ABRACadabRA";
 	string b = "aabb";
-	string c = a + a + a + a + a;
-	string d = "supercalifragilisticexpialidocious";
-	string input = c;
+	string c = a + a;
+	string d = "aabbabdc";
+	string e = "3051725927184861";
+	string f = "abcdefghijklmnop";
+	string input = f;
 
 	auto t1 = chrono::high_resolution_clock::now();
 
@@ -139,6 +147,7 @@ int main()
 	auto t2 = chrono::high_resolution_clock::now();
 	auto elapsed = chrono::duration_cast<chrono::milliseconds>(t2 - t1).count();
 	cout << "Time: " << elapsed << "ms \n";
+	cout << "Pred Time steps: " << time_pred(input) << "\n";
 
 	return 0;
 }
