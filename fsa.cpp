@@ -51,17 +51,12 @@ bool naive_assemble_objects(string &str, set<string> &objects)
 	{
 		for (auto b : objects)
 		{
-			string lhs = a + b;
-			string rhs = b + a;
-			if (keep_object(str, lhs))
+			string merged = a + b;
+			if (keep_object(str, merged))
 			{
-				new_objects.insert(lhs);
+				new_objects.insert(merged);
 			}
-			if (keep_object(str, rhs))
-			{
-				new_objects.insert(rhs);
-			}
-			if (lhs == str || rhs == str)
+			if (merged == str)
 			{
 				solution = true;
 				goto skip;
@@ -128,7 +123,7 @@ int main()
 	string b = "aabb";
 	string c = a + a + a + a + a;
 	string d = "supercalifragilisticexpialidocious";
-	string input = a;
+	string input = b;
 
 	auto t1 = chrono::high_resolution_clock::now();
 
