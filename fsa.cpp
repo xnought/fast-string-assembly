@@ -51,21 +51,28 @@ bool naive_assemble_objects(string &str, set<string> &objects)
 	{
 		for (auto b : objects)
 		{
-			new_objects.insert(a + b);
-			new_objects.insert(b + a);
-		}
-	}
-	for (auto no : new_objects)
-	{
-		if (keep_object(str, no))
-		{
-			objects.insert(no);
-			if (no == str)
+			string lhs = a + b;
+			string rhs = b + a;
+			if (keep_object(str, lhs))
+			{
+				new_objects.insert(lhs);
+			}
+			if (keep_object(str, rhs))
+			{
+				new_objects.insert(rhs);
+			}
+			if (lhs == str || rhs == str)
 			{
 				solution = true;
-				break;
+				goto skip;
 			};
 		}
+	}
+
+skip:
+	for (auto no : new_objects)
+	{
+		objects.insert(no);
 	}
 
 	return solution;
@@ -100,8 +107,8 @@ int naive_string_assembly(string str)
 	while (sol != true)
 	{
 		sol = naive_assemble_objects(str, objects);
-		cout << sol << " ";
-		print_set(objects);
+		// cout << sol << " ";
+		// print_set(objects);
 	}
 	cout << "Solution found!" << "\n";
 
@@ -112,7 +119,7 @@ int main()
 {
 	string a = "ABRACadabRA";
 	string b = "aabb";
-	string c = a + a + a;
+	string c = a + a + a + a + a;
 
 	string input = c;
 	auto t1 = chrono::high_resolution_clock::now();
